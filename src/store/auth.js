@@ -16,7 +16,11 @@ export const useAuthStore = defineStore({
     processRegister(regPayload) {
       registerService(regPayload)
       .then((response) => {
-        console.log(response.date)
+        console.log(response.data)
+        this.isSuccess = true
+        setTimeout(() => {
+          window.location.href = '/'
+        }, 2000);
       })
       .catch((err)=> {
         console.log(err)
@@ -29,9 +33,13 @@ export const useAuthStore = defineStore({
       console.log(payload);
       loginService(payload)
       .then((response) => {
-        console.log(response.data)
+        //console.log(response.data)
+        this.isSuccess = true
+        this.clientId = response.data.clientId
+        this.token = response.data.token
       })
       .catch((err) => {
+        this.isError = true
         console.log(err)
       })
     }

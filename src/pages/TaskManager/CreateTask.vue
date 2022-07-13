@@ -69,7 +69,45 @@
 </template>
 
 <script>
-export default {
-  
-}
+import { defineComponent, ref } from 'vue'
+import { useTaskStore } from '../../store/task';
+export default defineComponent({
+  setup() {
+    const taskStore = useTaskStore();
+    var taskPriority = '';
+    const taskTitle = ref('');
+    const taskDesc = ref('');
+    const startDate = ref('');
+    const startTime = ref('');
+    const endDate = ref('');
+    const endTime = ref('');
+    
+    function getTaskPriorityVal (event) {
+      taskPriority = event.target.value
+    }
+    function createTask () {
+      var payload = {
+        taskTitle: taskTitle.value,
+        taskDesc: taskDesc.value,
+        startDate: startDate.value,
+        startTime: startTime.value,
+        endDate: endDate.value,
+        endTime: endTime.value, 
+        taskPriority
+      }
+      taskStore.createTask(payload)
+    }
+    return {
+      taskStore,
+      taskTitle,
+      taskDesc,
+      startDate,
+      startTime,
+      endDate,
+      endTime,
+      getTaskPriorityVal,
+      createTask
+    }
+  },
+})
 </script>

@@ -65,3 +65,33 @@
     </div>
   </div>
 </template>
+
+<script>
+import { defineComponent, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { useTaskStore } from '../../store/task';
+export default defineComponent({
+  setup() {
+    const taskStore = useTaskStore();
+    const route = useRoute();
+    taskStore.fetchSingleTask(route.params.id)
+    var form = ref(taskStore.getSingleTask);
+    function update () {
+      taskStore.update_task(route.params.id, form)
+    }
+    function getTaskPriority (event) {
+      form.value.taskPriority = event.target.value
+    }
+    function getTaskStatus (event) {
+      form.value.taskStatus = event.target.value
+    }
+    return {
+      task: taskStore.getSingleTask,
+      form,
+      update,
+      getTaskPriority,
+      getTaskStatus
+    }
+  },
+})
+</script>

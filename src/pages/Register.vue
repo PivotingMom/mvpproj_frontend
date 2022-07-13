@@ -34,7 +34,31 @@
 </template>
 
 <script>
-export default {
-  
-}
+import { defineComponent, ref } from 'vue'
+import { useAuthStore } from '../store/auth';
+export default defineComponent({
+  setup() {
+    const authStore = useAuthStore();
+    const first_name = ref('');
+    const last_name = ref('');
+    const username = ref('');
+    const email = ref('');
+    const password = ref('');
+    function register () {
+      var payload = {
+        first_name, last_name, username, email, password
+      }
+      authStore.processRegister(payload)
+    }
+    return {
+      authStore,
+      first_name,
+      last_name,
+      username,
+      email,
+      password,
+      register
+    }
+  },
+})
 </script>
