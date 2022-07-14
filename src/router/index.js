@@ -6,9 +6,15 @@ import Dashboard from '../pages/Dashboard.vue';
 import CreateTask from '../pages/TaskManager/CreateTask.vue';
 import ViewTask from '../pages/TaskManager/ViewTask.vue';
 import EditTask from '../pages/TaskManager/EditTask.vue';
+import Profile from '../pages/Profile.vue';
 import { suspenseHack } from "./helpers";
 
 const routes = [
+  {
+    path: '/my-profile',
+    name: 'Profile',
+    component: suspenseHack(Profile)
+  },
   {
     path: '/',
     name: 'Home',

@@ -8,3 +8,11 @@ export const loginService = (payload) => {
 export const registerService = (payload) => {
   return axios.post(`${baseUrl}/client`, payload)
 }
+
+export const clientService = () => {
+  return axios.get(`${baseUrl}/client`)
+};
+
+export const updateClientService = (payload) => {
+  return axios.patch(`${baseUrl}/client`, payload);
+}

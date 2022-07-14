@@ -2,10 +2,10 @@
   <div class="container">
     <p class="text-center">Welcome back!</p>
     <div>
-      <div class="alert alert-success" v-if="isSuccess">
+      <div class="alert alert-success" v-if="authStore.isSuccess">
         Login successful
       </div>
-      <div class="alert alert-danger" v-if="isError">
+      <div class="alert alert-danger" v-if="authStore.isError">
         Error in logging in
       </div>
       <div class="form-group mb-4">
@@ -42,15 +42,11 @@ export default defineComponent({
       authStore.processLogin(email.value, password.value)
     }
 
-    const { isSuccess, isError } = authStore.getStatus
-
     return {
       authStore,
       email,
       password,
       login,
-      isSuccess,
-      isError,
     }
   },
 })

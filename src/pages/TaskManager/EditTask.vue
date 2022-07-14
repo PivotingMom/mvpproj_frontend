@@ -2,7 +2,7 @@
   <div class="container">
     <div class="form-content-area mt-4">
       <h4>Edit Task</h4>
-      <form>
+      <form @submit.prevent="update(task)">
         <div class="form-group mb-4">
           <label for="taskTitle">Task Title</label>
           <input type="text" class="form-control" placeholder="Enter Task Title" v-model="task.taskTitle">
@@ -70,15 +70,19 @@
 import { defineComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useTaskStore } from '../../store/task';
+//import { storeToRefs } from 'pinia';
 export default defineComponent({
   async setup() {
     const taskStore = useTaskStore();
     const route = useRoute();
     await taskStore.fetchSingleTask(route.params.id)
-    console.log(taskStore.getSingleTask);
-  var form = ref(taskStore.getSingleTask);
-    function update () {
-      taskStore.update_task(route.params.id, form)
+
+    //const { singleTask } = storeToRefs(taskStore);
+    const form = ref(taskStore.getSingleTask);
+
+    function update (task) {
+      console.log(task);
+      taskStore.update_task(route.params.id, task)
     }
     function getTaskPriority (event) {
       form.value.taskPriority = event.target.value
@@ -87,7 +91,6 @@ export default defineComponent({
       form.value.taskStatus = event.target.value
     }
 
-    //console.log(taskStore.getSingleTask())
     return {
       task: taskStore.getSingleTask,
       form,

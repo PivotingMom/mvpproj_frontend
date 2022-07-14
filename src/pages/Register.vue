@@ -4,26 +4,26 @@
     <div>
       <div class="form-group mb-4">
         <label for="first_name">First name</label>
-        <input type="text" class="form-control" placeholder="Enter First name" />
+        <input type="text" class="form-control" placeholder="Enter First name" v-model="first_name" />
       </div>
       <div class="form-group mb-4">
         <label for="last_name">Last name</label>
-        <input type="text" class="form-control" placeholder="Enter Last name" />
+        <input type="text" class="form-control" placeholder="Enter Last name" v-model="last_name" />
       </div>
       <div class="form-group mb-4">
         <label for="email">Email</label>
-        <input type="email" class="form-control" placeholder="Enter Email" />
+        <input type="email" class="form-control" placeholder="Enter Email" v-model="email" />
       </div>
       <div class="form-group mb-4">
         <label for="username">Username</label>
-        <input type="text" class="form-control" placeholder="Enter Username" />
+        <input type="text" class="form-control" placeholder="Enter Username" v-model="username" />
       </div>
       <div class="form-group mb-4">
         <label for="username">Password</label>
-        <input type="password" class="form-control" placeholder="Enter Username" />
+        <input type="password" class="form-control" placeholder="Enter Password" v-model="password" />
       </div>
       <div>
-        <button class="btn btn-success">Register Account</button>
+        <button class="btn btn-success" @click="register()">Register Account</button>
       </div>
       <div>
         <p>Already have an account? <router-link to="/">Login</router-link>
@@ -45,8 +45,9 @@ export default defineComponent({
     const email = ref('');
     const password = ref('');
     function register () {
+      console.log(first_name);
       var payload = {
-        first_name, last_name, username, email, password
+        first_name: first_name.value, last_name: last_name.value, username: username.value, email: email.value, password: password.value
       }
       authStore.processRegister(payload)
     }
