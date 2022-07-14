@@ -6,6 +6,7 @@ import Dashboard from '../pages/Dashboard.vue';
 import CreateTask from '../pages/TaskManager/CreateTask.vue';
 import ViewTask from '../pages/TaskManager/ViewTask.vue';
 import EditTask from '../pages/TaskManager/EditTask.vue';
+import { suspenseHack } from "./helpers";
 
 const routes = [
   {
@@ -37,7 +38,7 @@ const routes = [
   {
     path: '/my-tasks',
     name: 'ViewTask',
-    component: ViewTask,
+    component: suspenseHack(ViewTask),
     meta: {
       requiresAuth: true
     }
@@ -45,7 +46,7 @@ const routes = [
   {
     path: '/edit-task/:id?',
     name: 'EditTask',
-    component: EditTask,
+    component: suspenseHack(EditTask),
     meta: {
       requiresAuth: true
     }

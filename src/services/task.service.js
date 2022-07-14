@@ -2,7 +2,7 @@ import axios from 'axios';
 const baseUrl = 'http://127.0.0.1:5000/api';
 
 export const createNewTask = (payload) => {
-    return axios.post(`${baseUrl}/create-task`, payload)
+    return axios.post(`${baseUrl}/create_task`, payload)
 }
 
 export const getAllTasks = () => {

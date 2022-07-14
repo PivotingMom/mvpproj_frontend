@@ -1,13 +1,12 @@
+//import { useLocalStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import { createNewTask, getAllTasks, deleteSingleTask, getSingleTask, updateTask } from '../services/task.service';
 
-export const useTaskStore = defineStore({
-  id: 'task',
-  state: () => ({
-    tasks: [
+/*
+const defaultTasks =  [
         {
             id: 1,
-            taskName: 'Testing',
+            taskTitle: 'Testing',
             taskDesc: 'Hello world lorem ipsum Hello world lorem ipsum',
             startDate: '09/09/2003',
             startTime: '09:45',
@@ -18,7 +17,7 @@ export const useTaskStore = defineStore({
         },
         {
             id: 2,
-            taskName: 'Testing 2',
+            taskTitle: 'Testing 2',
             taskDesc: 'Hello world lorem ipsum Hello world lorem ipsum',
             startDate: '09/11/2005',
             startTime: '19:45',
@@ -27,10 +26,19 @@ export const useTaskStore = defineStore({
             taskPriority: 'Low',
             taskStatus: 'Completed'
         }
-    ],
+    ];
+*/
+
+export const useTaskStore = defineStore('task', {
+  //id: 'task',
+  state: () => ({
+    //tasks: useLocalStorage('tasks', defaultTasks),
+    tasks: [],
+    singleTask: {},
+    /*
     singleTask: {
         id: 2,
-        taskName: 'Testing 2',
+        taskTitle: 'Testing 2',
         taskDesc: 'Hello world lorem ipsum Hello world lorem ipsum',
         startDate: '09/11/2005',
         startTime: '19:45',
@@ -39,6 +47,7 @@ export const useTaskStore = defineStore({
         taskPriority: 'Low',
         taskStatus: 'Completed'
     },
+    */
     isSuccess: false,
     isError: false
   }),
@@ -56,9 +65,9 @@ export const useTaskStore = defineStore({
       .then((response) => {
         console.log(response.data)
         alert("Task created successfully")
-        this.isSuccess = true
+        //this.isSuccess = true
         setTimeout(() => {
-          window.location.href = '/'
+          window.location.href = '/my-tasks'
         }, 2000);
       })
       .catch((err)=> {
@@ -69,7 +78,22 @@ export const useTaskStore = defineStore({
     async fetchAllTasks() {
         await getAllTasks()
         .then((response) => {
-            this.tasks = response.data.tasks
+            console.log('All tasks data')
+            console.log(response);
+            this.tasks = response.data.map(item => {
+                return {
+                    id: item[0],
+                    clientId: item[1],
+                    taskTitle:  item[2],   
+                    taskDesc: item[3],
+                    startDate: item[4],
+                    startTime: item[5],
+                    endDate: item[6],
+                    endTime: item[7],
+                    taskPriority: item[8],
+                    taskStatus: item[9]
+                }
+            })
         })
         .catch((err) => {
             console.log(err)
@@ -91,8 +115,20 @@ export const useTaskStore = defineStore({
     async fetchSingleTask(taskId) {
         await getSingleTask(taskId)
         .then((response) => {
-            this.singleTask = response.data;
+            const item = response.data;
             console.log(response.data)
+            this.singleTask = {
+                    id: item[0],
+                    clientId: item[1],
+                    taskTitle:  item[2],   
+                    taskDesc: item[3],
+                    startDate: item[4],
+                    startTime: item[5],
+                    endDate: item[6],
+                    endTime: item[7],
+                    taskPriority: item[8],
+                    taskStatus: item[9]
+            }
         })
         .catch((err) => {
             this.singleTask = {}
@@ -110,3 +146,9 @@ export const useTaskStore = defineStore({
     }
   }
 })
+
+/*
+watch(pinia.state, (state)=> {
+    localStorage.setItem ("tasks", JSON.stringify, state);
+}, { deep: true } );
+*/

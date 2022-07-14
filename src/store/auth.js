@@ -11,7 +11,11 @@ export const useAuthStore = defineStore({
     isError: false
   }),
   getters: {
-
+    getStatus: (state) => { 
+      return {
+        isError: state.isError, isSuccess: state.isSuccess 
+      }
+    },
   },
   actions: {
     processRegister(regPayload) {

@@ -16,28 +16,28 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group mb-4">
-              <label for="startDate">Start Date</label>
-              <input type="time" class="form-control" v-model="startDate" placeholder="Enter Task Title">
+              <label for="startTime">Start Time</label>
+              <input type="time" class="form-control" v-model="startTime" placeholder="Enter task start time">
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group mb-4">
-              <label for="startTime">Start Time</label>
-              <input type="date" class="form-control" v-model="startTime" placeholder="Enter Task Title">
+              <label for="startDate">Start Date</label>
+              <input type="date" class="form-control" v-model="startDate" placeholder="Enter Task task start date">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group mb-4">
-              <label for="endDate">End Date</label>
-              <input type="time" class="form-control" v-model="endDate" placeholder="Enter Task Title">
+              <label for="endtime">End Time</label>
+              <input type="time" class="form-control" v-model="endTime" placeholder="Enter task end time">
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group mb-4">
-              <label for="endTime">End Time</label>
-              <input type="date" class="form-control" v-model="endTime" placeholder="Enter Task Title">
+            <div class="col-md-6">
+              <div class="form-group mb-4">
+                <label for="endDate">End Date</label>
+                <input type="date" class="form-control" v-model="endDate" placeholder="Enter Task task end date">
+              </div>
             </div>
           </div>
         </div>

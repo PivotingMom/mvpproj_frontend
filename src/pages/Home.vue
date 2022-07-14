@@ -37,17 +37,20 @@ export default defineComponent({
     const authStore = useAuthStore();
     const email = ref('');
     const password = ref('');
-    // const { isSuccess, isError } = storeToRefs(authStore);
 
     function login () {
       authStore.processLogin(email.value, password.value)
     }
 
+    const { isSuccess, isError } = authStore.getStatus
+
     return {
       authStore,
       email,
       password,
-      login
+      login,
+      isSuccess,
+      isError,
     }
   },
 })

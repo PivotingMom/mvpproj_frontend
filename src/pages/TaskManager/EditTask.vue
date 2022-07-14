@@ -5,43 +5,43 @@
       <form>
         <div class="form-group mb-4">
           <label for="taskTitle">Task Title</label>
-          <input type="text" class="form-control" placeholder="Enter Task Title">
+          <input type="text" class="form-control" placeholder="Enter Task Title" v-model="task.taskTitle">
         </div>
         <div class="form-group mb-4">
           <label for="taskDescription">Task Description</label>
-          <input type="text" class="form-control" placeholder="Enter Task Description">
+          <input type="text" class="form-control" placeholder="Enter Task Description" v-model="task.taskDesc">
         </div>
         <div class="row">
-          <div class="col-md-6">
-            <div class="form-group mb-4">
-              <label for="startDate">Start Date</label>
-              <input type="time" class="form-control" placeholder="Enter Task Title">
-            </div>
-          </div>
           <div class="col-md-6">
             <div class="form-group mb-4">
               <label for="startTime">Start Time</label>
-              <input type="date" class="form-control" placeholder="Enter Task Title">
+              <input type="time" class="form-control" v-model="task.startTime">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group mb-4">
+              <label for="startDate">Start Date</label>
+              <input type="date" class="form-control" v-model="task.startDate">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group mb-4">
-              <label for="endDate">End Date</label>
-              <input type="time" class="form-control" placeholder="Enter Task Title">
+              <label for="endTime">End Time</label>
+              <input type="time" class="form-control" v-model="task.endTime">
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group mb-4">
               <label for="endTime">End Time</label>
-              <input type="date" class="form-control" placeholder="Enter Task Title">
+              <input type="date" class="form-control" v-model="task.endDate">
             </div>
           </div>
         </div>
         <div class="form-group mb-4">
           <label for="taskPriority">Task Priority</label>
-          <select class="form-control">
+          <select class="form-control" v-model="task.taskPriority">
             <option>Select priority</option>
             <option value="High">High</option>
             <option value="Normal">Normal</option>
@@ -49,8 +49,8 @@
           </select>
         </div>
         <div class="form-group mb-4">
-          <label for="taskPriority">Task Status</label>
-          <select class="form-control">
+          <label for="taskStatus">Task Status</label>
+          <select class="form-control" v-model="task.taskStatus">
             <option>Select Status</option>
             <option value="Pending">Pending</option>
             <option value="Closed">Closed</option>
@@ -71,11 +71,12 @@ import { defineComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useTaskStore } from '../../store/task';
 export default defineComponent({
-  setup() {
+  async setup() {
     const taskStore = useTaskStore();
     const route = useRoute();
-    taskStore.fetchSingleTask(route.params.id)
-    var form = ref(taskStore.getSingleTask);
+    await taskStore.fetchSingleTask(route.params.id)
+    console.log(taskStore.getSingleTask);
+  var form = ref(taskStore.getSingleTask);
     function update () {
       taskStore.update_task(route.params.id, form)
     }
@@ -88,7 +89,7 @@ export default defineComponent({
 
     //console.log(taskStore.getSingleTask())
     return {
-      task: taskStore.fetchSingleTask(route.params.id),
+      task: taskStore.getSingleTask,
       form,
       update,
       getTaskPriority,
