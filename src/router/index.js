@@ -21,22 +21,34 @@ const routes = [
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: Dashboard
+    component: Dashboard,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/create-task',
     name: 'CreateTask',
-    component: CreateTask
+    component: CreateTask,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/my-tasks',
     name: 'ViewTask',
-    component: ViewTask
+    component: ViewTask,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
-    path: '/edit-task/:id',
+    path: '/edit-task/:id?',
     name: 'EditTask',
-    component: EditTask
+    component: EditTask,
+    meta: {
+      requiresAuth: true
+    }
   }
 ];
 

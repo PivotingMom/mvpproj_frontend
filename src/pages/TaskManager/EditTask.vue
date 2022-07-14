@@ -85,8 +85,10 @@ export default defineComponent({
     function getTaskStatus (event) {
       form.value.taskStatus = event.target.value
     }
+
+    //console.log(taskStore.getSingleTask())
     return {
-      task: taskStore.getSingleTask,
+      task: taskStore.fetchSingleTask(route.params.id),
       form,
       update,
       getTaskPriority,

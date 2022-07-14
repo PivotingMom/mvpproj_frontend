@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import router from '../router';
 import { loginService, registerService } from '@/services/auth.service';
 
 export const useAuthStore = defineStore({
@@ -30,13 +31,15 @@ export const useAuthStore = defineStore({
       var payload = {
         email, password
       }
-      console.log(payload);
       loginService(payload)
       .then((response) => {
+        console.log(response)
         //console.log(response.data)
         this.isSuccess = true
         this.clientId = response.data.clientId
         this.token = response.data.token
+        localStorage.setItem('token', response.data.token);
+        router.push('/dashboard')
       })
       .catch((err) => {
         this.isError = true

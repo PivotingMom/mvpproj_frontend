@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h4 class="text-center mt-2">Welcome Back...Login!!!</h4>
+    <p class="text-center">Welcome back!</p>
     <div>
       <div class="alert alert-success" v-if="isSuccess">
         Login successful
