@@ -16,3 +16,7 @@ export const clientService = () => {
 export const updateClientService = (payload) => {
   return axios.patch(`${baseUrl}/client`, payload);
 }
+
+// I stumbled on this idea here ,iwhile trying to understand axios call better from link below 
+/* https://dev.to/julfikarhaidar/implementation-axios-and-vuejs-with-separate-service-2603
+ */

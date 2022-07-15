@@ -4,15 +4,15 @@
     <p class="text-center">Welcome back, <span v-text="authStore.name"></span>!</p>
     <div>
       <div class="form-group mb-4">
-        <label for="username">Email</label>
-        <input type="email" v-model="authStore.client.email" class="form-control" placeholder="Enter Email" />
+        <label for="email">Email</label>
+        <input type="email" v-model="authStore.client.email" class="form-control" placeholder="Enter new email" />
       </div>
       <div class="form-group mb-4">
-        <label for="username">Password</label>
+        <label for="password">Password</label>
         <input type="password" v-model="authStore.client.password" class="form-control" placeholder="Enter Password" />
       </div>
       <div class="form-group mb-4">
-        <label for="username">Name</label>
+        <label for="">name</label>
         <input type="text" v-model="authStore.client.name" class="form-control" placeholder="Enter Name" />
       </div>
       <div>
