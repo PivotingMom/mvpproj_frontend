@@ -3,13 +3,13 @@
     <div class="form-content-area mt-4">
       <!-- <CreateEntryHeader /> -->
       <h4>Create a new note</h4>
-      <p>Want to View already created note, <router-link to="/my-notes">Click here</router-link>
+      <p>Want to view past entries, <router-link to="/my-entry">Click here</router-link>
       </p> 
       <form>
         <div class="form-group mb-4">
           <label for="Title">Entry Title:</label>
           <!-- NOTE: v-model attribute provides automatic access to 2-way reactive binding  -->
-          <input type="entrytext" class="form-control" v-model="journalStore.currentEntry.entryTitle" placeholder="Enter Task Title">
+          <input type="entrytext" class="form-control" v-model="journalStore.currentEntry.entryTitle" placeholder="Enter Title">
         </div>
         <div class="form-group mb-4">
           <label for="Content">Content:</label>

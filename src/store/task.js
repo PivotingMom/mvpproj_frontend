@@ -1,53 +1,13 @@
-//import { useLocalStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import { createNewTask, getAllTasks, deleteSingleTask, getSingleTask, updateTask } from '../services/task.service';
 
-/*
-const defaultTasks =  [
-        {
-            id: 1,
-            taskTitle: 'Testing',
-            taskDesc: 'Hello world lorem ipsum Hello world lorem ipsum',
-            startDate: '09/09/2003',
-            startTime: '09:45',
-            endDate: '09/09/2004',
-            endTime: '08:45',
-            taskPriority: 'High',
-            taskStatus: 'Pending'
-        },
-        {
-            id: 2,
-            taskTitle: 'Testing 2',
-            taskDesc: 'Hello world lorem ipsum Hello world lorem ipsum',
-            startDate: '09/11/2005',
-            startTime: '19:45',
-            endDate: '09/09/2010',
-            endTime: '08:45',
-            taskPriority: 'Low',
-            taskStatus: 'Completed'
-        }
-    ];
-*/
 
 export const useTaskStore = defineStore('task', {
   //id: 'task',
   state: () => ({
-    //tasks: useLocalStorage('tasks', defaultTasks),
     tasks: [],
     singleTask: {},
-    /*
-    singleTask: {
-        id: 2,
-        taskTitle: 'Testing 2',
-        taskDesc: 'Hello world lorem ipsum Hello world lorem ipsum',
-        startDate: '09/11/2005',
-        startTime: '19:45',
-        endDate: '09/09/2010',
-        endTime: '08:45',
-        taskPriority: 'Low',
-        taskStatus: 'Completed'
-    },
-    */
+    
     isSuccess: false,
     isError: false
   }),
@@ -147,8 +107,3 @@ export const useTaskStore = defineStore('task', {
   }
 })
 
-/*
-watch(pinia.state, (state)=> {
-    localStorage.setItem ("tasks", JSON.stringify, state);
-}, { deep: true } );
-*/

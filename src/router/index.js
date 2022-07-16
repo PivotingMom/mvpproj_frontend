@@ -7,7 +7,10 @@ import CreateTask from '../pages/TaskManager/CreateTask.vue';
 import ViewTask from '../pages/TaskManager/ViewTask.vue';
 import EditTask from '../pages/TaskManager/EditTask.vue';
 import CreateEntry from '../pages/Journal/CreateEntry.vue';
+import ViewEntry from '../pages/Journal/ViewEntry.vue';
+import EditEntry from '../pages/Journal/EditEntry.vue';
 import Profile from '../pages/Profile.vue';
+
 import { WrapAsyncComponent } from "./helpers";
 
 const routes = [
@@ -43,13 +46,14 @@ const routes = [
     }
   },
   {
-    path: '/create-entry',
-    name: 'CreateEntry',
-    component: CreateEntry,
+    path: '/my-tasks',
+    name: 'ViewTask',
+    component: WrapAsyncComponent(ViewTask),
     meta: {
-      requiresAuth: true,
+      requiresAuth: true
     }
   },
+
   {
     path: '/my-tasks',
     name: 'ViewTask',
@@ -58,14 +62,39 @@ const routes = [
       requiresAuth: true
     }
   },
-  {
+    {
     path: '/edit-task/:id?',
     name: 'EditTask',
     component: WrapAsyncComponent(EditTask),
     meta: {
       requiresAuth: true
     }
+  },
+    {
+    path: '/create-entry',
+    name: 'CreateEntry',
+    component: CreateEntry,
+    meta: {
+      requiresAuth: true,
+    }
+  },
+  {
+    path: '/my-entry',
+    name: 'ViewEntry',
+    component: WrapAsyncComponent(ViewEntry),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/edit-entry/:id?',
+    name: 'EditEntry',
+    component: WrapAsyncComponent(EditEntry),
+    meta: {
+      requiresAuth: true
+    }
   }
+
 ];
 
 const router = createRouter({
