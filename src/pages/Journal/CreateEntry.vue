@@ -1,33 +1,44 @@
 <template>
   <div class="container">
     <div class="form-content-area mt-4">
+      <!-- <CreateEntryHeader /> -->
       <h4>Create a new note</h4>
       <p>Want to View already created note, <router-link to="/my-notes">Click here</router-link>
-      </p>
+      </p> 
       <form>
         <div class="form-group mb-4">
-          <label for="Title">entryTitle</label>
-          <input type="entrytext" class="form-control" v-model="entryTitle" placeholder="Enter Task Title">
+          <label for="Title">Entry Title:</label>
+          <!-- NOTE: v-model attribute provides automatic access to 2-way reactive binding  -->
+          <input type="entrytext" class="form-control" v-model="journalStore.currentEntry.entryTitle" placeholder="Enter Task Title">
         </div>
         <div class="form-group mb-4">
-          <label for="Content">Content</label>
-          <input type="text" class="form-control" v-model="createNote" placeholder="Create Note">
+          <label for="Content">Content:</label>
+          <input type="text" class="form-control" v-model="journalStore.currentEntry.entryBody" placeholder="Create Note">
         </div>
+        <div class="form-group">
+          <button class="btn btn-success" @click.prevent="createNote">SAVE</button>
         </div>
+      </form>
     </div>
-    <div class="form-group mb-4">
-      <label for="taskPriority">Task Priority</label>
-      <select class="form-control" @change="getTaskPriorityVal($event)">
-        <option>Select priority</option>
-        <option value="High">High</option>
-        <option value="Normal">Normal</option>
-        <option value="Low">Low</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <button class="btn btn-success" @click.prevent="createNote">Create Note</button>
-    </div>
-    </form>
-  </div>
   </div>
 </template>
+
+<script>
+import { useJournalStore } from '@/store/journal'
+
+export default {
+  setup() {
+    const journalStore = useJournalStore();
+    return {
+      journalStore,
+      createNote: () => {
+        //console.log(journalStore.$state)
+        journalStore.saveNote();
+      }
+    }
+  },
+  components: {
+    
+  }
+}
+</script>

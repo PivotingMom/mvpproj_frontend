@@ -25,7 +25,7 @@
             <div class="card-body">
               <h5 class="card-title">Journal</h5>
               <p class="card-text">Make a reflective note of your day, it's helps for healthy mental health</p>
-              <router-link to="/create-task" class="btn btn-primary">Visit app</router-link>
+              <router-link to="/create-entry" class="btn btn-primary">Visit app</router-link>
             </div>
           </div>
         </div>

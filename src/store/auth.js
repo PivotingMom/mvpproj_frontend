@@ -15,15 +15,6 @@ export const useAuthStore = defineStore({
     password: '',
     client: {},
   }),
-  getters: {
-    getEmail: state => state.email,
-    getPassword: state => state.password,
-    getStatus: (state) => { 
-      return {
-        isError: state.isError, isSuccess: state.isSuccess 
-      }
-    },
-  },
   actions: {
     updateClient(payload) {
       updateClientService(payload).then(response => {
@@ -46,10 +37,7 @@ export const useAuthStore = defineStore({
         this.password = password;
         console.log(response.data)
         this.isSuccess = true
-        setTimeout(() => {
-          router
-          window.location.href = '/my-profile'
-        }, 2000);
+        router.push("/dashboard")
       })
       .catch((err)=> {
         console.log(err)

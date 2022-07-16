@@ -6,14 +6,15 @@ import Dashboard from '../pages/Dashboard.vue';
 import CreateTask from '../pages/TaskManager/CreateTask.vue';
 import ViewTask from '../pages/TaskManager/ViewTask.vue';
 import EditTask from '../pages/TaskManager/EditTask.vue';
+import CreateEntry from '../pages/Journal/CreateEntry.vue';
 import Profile from '../pages/Profile.vue';
-import { suspenseHack } from "./helpers";
+import { WrapAsyncComponent } from "./helpers";
 
 const routes = [
   {
     path: '/my-profile',
     name: 'Profile',
-    component: suspenseHack(Profile)
+    component: WrapAsyncComponent(Profile)
   },
   {
     path: '/',
@@ -42,9 +43,17 @@ const routes = [
     }
   },
   {
+    path: '/create-entry',
+    name: 'CreateEntry',
+    component: CreateEntry,
+    meta: {
+      requiresAuth: true,
+    }
+  },
+  {
     path: '/my-tasks',
     name: 'ViewTask',
-    component: suspenseHack(ViewTask),
+    component: WrapAsyncComponent(ViewTask),
     meta: {
       requiresAuth: true
     }
@@ -52,7 +61,7 @@ const routes = [
   {
     path: '/edit-task/:id?',
     name: 'EditTask',
-    component: suspenseHack(EditTask),
+    component: WrapAsyncComponent(EditTask),
     meta: {
       requiresAuth: true
     }

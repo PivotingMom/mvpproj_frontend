@@ -1,6 +1,6 @@
 import { h, Suspense } from "vue";
 
-export function suspenseHack(component) {
+export function WrapAsyncComponent(component) {
   const wrapper = () =>
     h(Suspense, null, {
       default() {
@@ -10,6 +10,6 @@ export function suspenseHack(component) {
         return h("app-loading");  // <-- REPLACE THIS WITH YOUR OWN FALLBACK
       },
     });
-  wrapper.displayName = "SuspenseHack";
+  wrapper.displayName = "WrapAsyncComponent";
   return wrapper;
 }

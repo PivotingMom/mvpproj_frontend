@@ -67,7 +67,7 @@ export const useTaskStore = defineStore('task', {
         alert("Task created successfully")
         //this.isSuccess = true
         setTimeout(() => {
-          window.location.href = '/my-tasks'
+            window.location.href = '/my-tasks'
         }, 2000);
       })
       .catch((err)=> {
