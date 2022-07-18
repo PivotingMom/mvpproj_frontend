@@ -1,4 +1,5 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue' 
+//this was helpful to understand the createApp, line2,30 &34 https://blog.logrocket.com/definitive-guide-vue-3-components/
 import App from './App.vue'
 import router from './router'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -9,10 +10,7 @@ import { createPinia } from 'pinia'
 
 
 axios.defaults.headers.common['Content-Type'] = 'application/json' 
-//const token = localStorage.getItem('token')
-//if (token) {
- // axios.defaults.headers.common.token = token
-//}
+
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
