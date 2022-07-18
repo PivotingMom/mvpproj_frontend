@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia';
 import router from '../router';
-import { loginService, registerService, clientService, updateClientService } from '@/services/auth.service';
+import { loginService, logoutService, registerService, clientService, updateClientService } from '@/services/auth.service';
 import { tryOnUnmounted } from '@vueuse/core';
+import axios from 'axios';
 
 export const useAuthStore = defineStore({
   id: 'auth',
@@ -54,7 +55,8 @@ export const useAuthStore = defineStore({
         this.isSuccess = tryOnUnmounted
         this.clientId = response.data.clientId
         this.token = response.data.token
-        localStorage.setItem('token', response.data.token);
+        axios.defaults.headers.common.token = this.token
+        //SlocalStorage.setItem('token', response.data.token);
         router.push('/dashboard')
 
       })
@@ -62,6 +64,22 @@ export const useAuthStore = defineStore({
         this.isError = true
         console.log(err)
       })
+    },
+      processLogout() {
+        console.log(this.token);
+        var payload = {
+          token: this.token
+        }
+        this.$reset();
+    
+        logoutService(payload)
+          .then(() => {
+            router.push('/')
+          })
+          .catch((err) => {
+            this.isError = true
+            console.log(err)
+          })
     }
   }
 })

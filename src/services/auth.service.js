@@ -5,6 +5,14 @@ export const loginService = (payload) => {
   return axios.post(`${baseUrl}/client_login`, payload)
 }
 
+export const logoutService = (payload) => {
+  return axios.delete(`${baseUrl}/client`, {
+    headers: {
+      token: payload.token
+    }
+  })
+}
+
 export const registerService = (payload) => {
   return axios.post(`${baseUrl}/client`, payload)
 }

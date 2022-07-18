@@ -9,10 +9,10 @@ import { createPinia } from 'pinia'
 
 
 axios.defaults.headers.common['Content-Type'] = 'application/json' 
-const token = localStorage.getItem('token')
-if (token) {
-  axios.defaults.headers.common.token = token
-}
+//const token = localStorage.getItem('token')
+//if (token) {
+ // axios.defaults.headers.common.token = token
+//}
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
