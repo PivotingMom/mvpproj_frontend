@@ -14,9 +14,10 @@
         <tbody v-for="(entry, index) in entry" :key="entry.id">
           <tr>
             <th scope="row">{{ index + 1 }}</th>
-            <td>{{ entry.entryTitle }}</td>
-            <td>{{ content.entryContent}}</td>
-            <td>{{ Date.entryDate }}</td>
+            <td>{{ entry.Title }}</td>
+            <td>{{ entry.content}}</td>
+            <td>{{ entry.created_at }}</td>
+            
             <td>
               <button class="btn btn-success edit-btn" @click="editEntry(entry.id)">Edit</button>
               <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -57,7 +58,8 @@
   <script>
   import "bootstrap-icons/font/bootstrap-icons.css"
   import { defineComponent } from 'vue'
-  import { useJournalStore } from '@/store/journal'
+  import { useJournalStore } from '@/store/journal' 
+  import { useRouter } from "vue-router"
   var entryId = null
   
   export default defineComponent({
@@ -81,7 +83,8 @@
   
     async setup() {
       const journalStore = useJournalStore();
-  
+      const router = useRouter()
+
       function editEntry(id) {
         this.$router.push(`/edit-entry/${id}`);
       }
@@ -93,13 +96,16 @@
       function deleteEntry() {
         journalStore.deleteSelectedEntry(entryId)
       }
+
+      console.log(router.query)
   
       await journalStore.fetchAllEntry();
-      console.log(journalStore.getAllEntry)
+      console.log(journalStore.allEntries)
+
   
       return {
         journalStore,
-        entry: journalStore.getAllEntry,
+        entry: journalStore.allEntries,
         editEntry,
         promptDelete,
         deleteEntry

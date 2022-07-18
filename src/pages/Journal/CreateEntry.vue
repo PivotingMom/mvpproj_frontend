@@ -9,11 +9,11 @@
         <div class="form-group mb-4">
           <label for="Title">Entry Title:</label>
           <!-- NOTE: v-model attribute provides automatic access to 2-way reactive binding  -->
-          <input type="entrytext" class="form-control" v-model="journalStore.currentEntry.entryTitle" placeholder="Enter Title">
+          <input type="entrytext" class="form-control" v-model="journalStore.currentEntry.Title" placeholder="Enter Title">
         </div>
         <div class="form-group mb-4">
           <label for="Content">Content:</label>
-          <input type="text" class="form-control" v-model="journalStore.currentEntry.entryBody" placeholder="Create Note">
+          <input type="text" class="form-control" v-model="journalStore.currentEntry.content" placeholder="Create Note">
         </div>
         <div class="form-group">
           <button class="btn btn-success" @click.prevent="createNote">SAVE</button>

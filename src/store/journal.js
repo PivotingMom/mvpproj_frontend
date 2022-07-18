@@ -1,20 +1,21 @@
-import { createJournalEntry, getAllEntry, getSingleEntry, deleteSingleEntry, updateEntry} from '@/services/journal.service';
 import { defineStore } from 'pinia';
+import { createJournalEntry, getAllEntry, getSingleEntry, deleteSingleEntry, updateEntry} from '@/services/journal.service';
 import { useAuthStore } from './auth';
 
 export const useJournalStore = defineStore('journal', {
   state: () => {
     return {
       currentEntry: {
-        entryTitle: '',
-        entryBody: '',
+        Title: '',
+        content: '',
       },
-    }
+      allEntries: []
+    } 
   },
   actions: {
     saveNote() {
       const authStore = useAuthStore();
-      const { entryTitle: Title, entryBody: content } = this.$state.currentEntry;
+      const { Title, content } = this.$state.currentEntry;
 
       const payload = {
         Title,
@@ -32,13 +33,13 @@ export const useJournalStore = defineStore('journal', {
         .then((response) => {
             console.log('All Entry data')
             console.log(response);
-            this.Journal = response.data.map(entry => {
+            this.allEntries = response.data.map(item => {
                 return {
-                    id: entry[0],
-                    Title: entry[1],   
-                    content:entry[2],
-                    clientId: entry[3],
-                    // Date: item[4],
+                    id: item[0],
+                    Title: item[1],   
+                    content:item[2],
+                    clientId: item[3],
+                    created_at: item[4]
                 }
             })
           })
@@ -61,19 +62,19 @@ export const useJournalStore = defineStore('journal', {
     },
     async fetchSingleEntry(journalId) {
         await getSingleEntry(journalId)
-        .then((response) => {
+          .then((response) => {
             const item = response.data;
             console.log(response.data)
-            this.singleEntry = {
-                    id: item[0],
-                    clientId: item[1],
-                    Title:  item[2],   
-                    content: item[3],
-                    Date: item[4],
+            this.currentEntry = {
+              id: item[0],
+              clientId: item[1],
+              Title:  item[2],   
+              content: item[3],
+              Date: item[4],
             }
         })
         .catch((err) => {
-            this.singleEntry = {}
+            this.currentEntry = {}
             console.log(err)
         })
     },
