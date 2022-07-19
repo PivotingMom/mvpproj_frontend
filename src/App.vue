@@ -58,3 +58,5 @@ export default {
   margin-left: 25px;
 }
 </style>
+
+<!-- //to mount the application to the DOM simply means to make the vue application which is made up of javascript show up on the page in HTML. the mount method takes a css selector to target the element that we want to mount to.this element lives in the index.html file in the root of our project & this is the file that initially gets served in the browser & includes the javascript code for our Vue app.  -->

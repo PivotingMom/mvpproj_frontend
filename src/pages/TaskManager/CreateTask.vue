@@ -1,3 +1,4 @@
+<!-- Template component  containing a parent container, a header a  form element for input, router link helps with navigation, button,a v-model attribute that provides  2-way data binding for our reactive references ,  the v-model attribute- makes it easier to bind reactive data to a form input so that whether the data is modified by the user via the input or by the code the data always in sync. .  ---->
 <template>
   <div class="container">
     <div class="form-content-area mt-4">
@@ -58,6 +59,7 @@
   </div>
 </template>
 
+          <!-- by creating a new reactive ref & initializing it to an empty string, const key=ref('') store & adding v-model to our input  and assiging const values, a 2-way data binding was established btw the store and the input form, that way they always stay in-sync-->
 <script>
 import { defineComponent, ref } from 'vue'
 import { useTaskStore } from '../../store/task';
@@ -105,3 +107,5 @@ export default defineComponent({
   },
 })
 </script>
+
+<!-- // to be able to access the value of a kind of reactive reference I needed to use a special property named this.value, because vue uses proxies in other to create reactive data items.value.push({id:item.this.value.lenght + 1, label: newInput.this.value}) whenever you call a ref function what is returned is a reactive object with the actual data stored on the value property. -->

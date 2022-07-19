@@ -10,6 +10,7 @@ import CreateEntry from '../pages/Journal/CreateEntry.vue';
 import ViewEntry from '../pages/Journal/ViewEntry.vue';
 import EditEntry from '../pages/Journal/EditEntry.vue';
 import Profile from '../pages/Profile.vue';
+// import ShoppingListApp from '../pages/ShoppingApp/ShoppingListApp'
 
 import { WrapAsyncComponent } from "./helpers";
 
@@ -93,8 +94,15 @@ const routes = [
     meta: {
       requiresAuth: true
     }
-  }
-
+  },
+  // {
+  //   path: '/create-list',
+  //   name: 'ShoppingListApp',
+  //   component: ShoppingListApp,
+  //   meta: {
+  //     requiresAuth: true
+  //   }
+  // },
 ];
 
 const router = createRouter({

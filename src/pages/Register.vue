@@ -1,3 +1,4 @@
+<!-- //logic is similar to what i did on createEntry/create task/store  -->
 <template>
   <div class="container">
     <p class="text-center">Welcome to OrganizMe.</p>

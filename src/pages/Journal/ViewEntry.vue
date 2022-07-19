@@ -1,3 +1,4 @@
+<!-- bootstrap Template component  containing a parent container, a header a  table element for listing , a row element that helps in responsive state , button,a v-for directive that makes it easy to loop over and render arrays and objects in a template  and it is also reactive like the v-model---->
 <template>
   <div class="container">
     <h4 class="mt-4">My Journal Entry</h4>
@@ -11,13 +12,14 @@
             <th scope="col"> Date</th>
           </tr>
         </thead>
+<!-- because i want my list to be reactive/dynamic I have to store them as a reactive reference that way they be reactive to changes, so by writing "i will likean li for  each item in items li v-for <"items in items >{{items}}li, item being a variable. And for vue to be efficient when re-rendering, its recommended to add a special key attribute to all loops, set to a unique id per item such as an ID from a database. <li v-for="item in items" key="item.id'>{{item.label}}</li> (attribute binding)--li v-for="{id,label} in items" :key="id">{{label}} (destrctured) </li>we need to https://vueschool.io/lessons/vue-fundamentals-capi-list-rendering-in-vue -->
         <tbody v-for="(entry, index) in entry" :key="entry.id">
           <tr>
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ entry.Title }}</td>
             <td>{{ entry.content}}</td>
             <td>{{ entry.created_at }}</td>
-            
+
             <td>
               <button class="btn btn-success edit-btn" @click="editEntry(entry.id)">Edit</button>
               <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal"

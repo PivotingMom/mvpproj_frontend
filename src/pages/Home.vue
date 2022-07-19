@@ -1,3 +1,5 @@
+<!-- templates from bootsrap with a form element an input field and v-model attribute- makes it easier to bind reactive data to a form input so that whether the data is modified by the user via the input or by the code the data always in sync. the addition of attribute class binding to the v-if directive is setting a condition that should the operation in authStore was successful or otherwise display msg on line 8 and 11. @click event listens to when a user clicks .prevent is a attribute modifier to ensure there is no  
+-->
 <template>
   <div class="container">
     <p class="text-center">Welcome back!</p>

@@ -19,6 +19,6 @@ export const updateEntry = (journalId, payload) => {
     return axios.patch(`${baseUrl}/journal/${journalId}`, payload)
 }
 
-// I stumbled on this idea here ,iwhile trying to understand axios call better from link below 
+//placed all axios call to the backend API on a file and into a function , then call each in the store as needed, i think its helps to keep things tidy and ensures i didnt miss a step  I stumbled on this idea here ,iwhile trying to understand axios call better from link below 
 /* https://dev.to/julfikarhaidar/implementation-axios-and-vuejs-with-separate-service-2603
  */
