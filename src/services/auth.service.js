@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = 'http://127.0.0.1:5000/api';
+const baseUrl = 'http://organizmee.tk/api';
 
 export const loginService = (payload) => {
   return axios.post(`${baseUrl}/client_login`, payload)
