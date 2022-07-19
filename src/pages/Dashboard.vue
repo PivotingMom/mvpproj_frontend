@@ -5,7 +5,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Task Manager</h5>
-          <p class="card-text">Ensure you have a productive life by managin your time with this tool</p>
+          <p class="card-text">Ensure you have a productive life by managing your time with this tool</p>
           <router-link to="/create-task" class="btn btn-primary">Visit app</router-link>
         </div>
       </div>

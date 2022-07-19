@@ -56,8 +56,7 @@ export const useAuthStore = defineStore({
         this.clientId = response.data.clientId
         this.token = response.data.token
         axios.defaults.headers.common.token = this.token
-        //SlocalStorage.setItem('token', response.data.token);
-        router.push('/dashboard')
+        localStorage.setItem('token', response.data.token);
 
       })
       .catch((err) => {

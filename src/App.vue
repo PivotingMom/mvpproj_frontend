@@ -4,13 +4,15 @@
     <div class="logo-container">
       <img src="./assets/OrganizMe.png" class="logo" />
     </div>
-    <button class="back-to-dashboard" v-if="route.name !== 'Dashboard'" @click="backToDashboard()">Back to
-      Dashboard</button>
 
-    <div>
-      <button class="btn btn-success" @click="logout()">logout</button>
+    <div class="toolbar">
+      <button class="back-to-dashboard" v-if="route.name !== 'Dashboard' && authStore.isSuccess"
+        @click="backToDashboard()">Back to
+        Dashboard</button>
+      <button v-if="route.name === 'Dashboard'" class="btn btn-success" @click="logout()">logout</button>
     </div>
     <router-view></router-view>
+
   </div>
 </template>
 
@@ -24,8 +26,8 @@ export default {
     const authStore = useAuthStore();
     const router = useRouter();
     const route = useRoute();
-
-    console.log(route.name);
+//puting to use the imported stores
+    //console.log(this.$route.name);
 
     return {
       authStore,
@@ -33,7 +35,7 @@ export default {
       backToDashboard: () => {
         router.push('/dashboard');
       },
-      logout(){ 
+      logout() {
         authStore.processLogout()
       }
     }
@@ -46,15 +48,18 @@ export default {
   width: 300px;
   height: 150px;
 }
+
 .logo-container {
   margin-top: 25px;
   text-align: center;
 }
+
 .my-profile {
   float: right;
   margin-right: 20px
 }
-.back-to-dashboard {
+
+.toolbar {
   margin-left: 25px;
 }
 </style>
