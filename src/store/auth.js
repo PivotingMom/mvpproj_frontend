@@ -18,6 +18,7 @@ import axios from 'axios';
 //next I create the actions - updateClient, processClient, processRegister, processLogin, process logout
 //then set the data in our state to the response data from our JSON file
 //the state is accessed from an action via the keyword 'this' & directly specifying a  piece of state e.g this.client = response.data line 44
+
 export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
@@ -44,6 +45,7 @@ export const useAuthStore = defineStore({
         this.client = response.data
       })
     },
+//when the register btn is clicked on register .vue is emits a register event
 
     processRegister(regPayload) {
       registerService(regPayload)

@@ -59,7 +59,8 @@
   </div>
 </template>
 
-          <!-- by creating a new reactive ref & initializing it to an empty string, const key=ref('') store & adding v-model to our input  and assiging const values, a 2-way data binding was established btw the store and the input form, that way they always stay in-sync-->
+<!-- by creating a new reactive ref & initializing it to an empty string, const key=ref('') store & adding v-model to our input  and assiging const values, a 2-way data binding was established btw the store and the input form, that way they always stay in-sync. same logic with the register -->
+
 <script>
 import { defineComponent, ref } from 'vue'
 import { useTaskStore } from '../../store/task';
@@ -75,7 +76,7 @@ export default defineComponent({
     const endDate = ref('');
     const endTime = ref('');
 
-
+//listen to event and changing value
     function getTaskPriorityVal(event) {
       taskPriority = event.target.value
     }

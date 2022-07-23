@@ -34,13 +34,16 @@
   </div>
 </template>
 
+<!-- //to use the store in another component i needed to import the store from pinia and use it to define our store  & import useAuthStore to be able to use it combined with the v-model one could directly mutate state from anywhere in the app-->
 <script>
 import { defineComponent, ref } from 'vue'
 import { useAuthStore } from '../store/auth';
 
 // The setup() hook serves as the entry point for Composition API usage in components
 //using storeToRefs create refs for any reactive property in the pinia state and only useful when using state from the store. https://vuejs.org/api/reactivity-utilities.html#isref
-//this is a typical pattern for vue powered site, there will be some data in an API , some empty global state in the store, and on the page where the data is needed, some actions are called to fulfill that state
+//this is a typical pattern for vue powered site, there will be some data in an API , some empty global state in the store, and on the page where the data is needed, some actions are called to fulfill that state,its synonymous to state in store)
+//next I listened to the event "register" 
+
 export default defineComponent({
   setup() {
     const authStore = useAuthStore();

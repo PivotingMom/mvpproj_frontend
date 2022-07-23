@@ -1,9 +1,12 @@
 // replicated what i have on auth.service.js
+// import axios from 'axios';
+// const baseUrl = 'http://organizmee.tk/api';
+
 import axios from 'axios';
-const baseUrl = 'http://organizmee.tk/api';
+const baseUrl = 'http://127.0.0.1:5000/api';
 
 export const createNewTask = (payload) => {
-    return axios.post(`${baseUrl}/create_task`, payload)
+    return axios.post(`${baseUrl}/create-task`, payload)
 }
 
 export const getAllTasks = () => {

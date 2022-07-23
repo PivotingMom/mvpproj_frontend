@@ -1,23 +1,23 @@
 // replicated what i have on auth.service.js
 
 import axios from 'axios';
-const baseUrl = 'http://organizmee.tk/api';
+const baseUrl = 'http://127.0.0.1:5000/api';
 
-export const createJournalEntry = (payload) => axios.post(`${baseUrl}/create-journal`, payload)
+export const createJournalEntry = (payload) => axios.post(`${baseUrl}/create-entry`, payload)
 
 export const getAllEntry = () => {
-    return axios.get(`${baseUrl}/all-journal`)
+    return axios.get(`${baseUrl}/all-entry`)
 }
 
 export const deleteSingleEntry = (id) => {
-    return axios.delete(`${baseUrl}/journal/${id}`)
+    return axios.delete(`${baseUrl}/entry/${id}`)
 }
 
-export const getSingleEntry = (journalId) => {
-    return axios.get(`${baseUrl}/journal/${journalId}`)
+export const getSingleEntry = (entryId) => {
+    return axios.get(`${baseUrl}/entry/${entryId}`)
 }
 
-export const updateEntry = (journalId, payload) => {
-    return axios.patch(`${baseUrl}/journal/${journalId}`, payload)
+export const updateEntry = (entryId, payload) => {
+    return axios.patch(`${baseUrl}/entry/${entryId}`, payload)
 }
 

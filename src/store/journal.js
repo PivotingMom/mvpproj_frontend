@@ -55,8 +55,8 @@ export const useJournalStore = defineStore('journal', {
             this.allEntries = []
         })
     },
-    async deleteSelectedEntry(journalId) {
-        await deleteSingleEntry(journalId)
+    async deleteSelectedEntry(entryId) {
+        await deleteSingleEntry(entryId)
         .then((response) => {
             alert("Entry deleted successfully");
             window.location.reload();
@@ -67,8 +67,8 @@ export const useJournalStore = defineStore('journal', {
             console.log(err)
         })
     },
-    async fetchSingleEntry(journalId) {
-        await getSingleEntry(journalId)
+    async fetchSingleEntry(entryId) {
+        await getSingleEntry(entryId)
           .then((response) => {
             const item = response.data;
             console.log(response.data)
@@ -85,8 +85,8 @@ export const useJournalStore = defineStore('journal', {
             console.log(err)
         })
     },
-    async update_entry(journalId, payload) {
-        await updateEntry(journalId, payload)
+    async update_entry(entryId, payload) {
+        await updateEntry(entryId, payload)
         .then((response) => {
             console.log(response.data)
         })

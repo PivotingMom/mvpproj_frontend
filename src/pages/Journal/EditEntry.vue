@@ -2,14 +2,16 @@
   <div class="container">
     <div class="form-content-area mt-4">
       <h4>Edit Entry</h4>
+
       <form @submit.prevent="update(entry)">
         <div class="form-group mb-4">
-          <label for="EntryTitle">Entry Title</label>
-          <input type="entrytext" class="form-control" placeholder="Enter New Title" v-model="entry.Title">
+          <label for="EntryTitle">Enter new Title</label>
+          <input type="entrytext" class="form-control" placeholder="make changes" v-model="entry.Title">
         </div>
+
         <div class="form-group mb-4">
-          <label for="Content">Content:</label>
-          <input type="text" class="form-control" placeholder="Create New Note" v-model="entry.content">
+          <label for="Content">Enter new content</label>
+          <input type="entrytext" class="form-control" placeholder="make changes" v-model="entry.content">
         </div>
         <div class="form-group">
           <button class="btn btn-success">Update Entry</button>
