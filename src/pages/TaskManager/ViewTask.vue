@@ -1,4 +1,4 @@
-<!-- Template component  containing a parent container, a header a  table element for listing , a rrow element that helps in responsive state , button,a v-for directive that makes it easy to loop over and render arrays and objects in a template  and it is also reactive like the v-model---->
+<!-- Template component  containing a parent container, a header a  table element for listing , a row element that helps in responsive state , button,a v-for directive that makes it easy to loop over and render arrays and objects in a template  and it is also reactive like the v-model---->
     <template>
       <div class="container">
         <h4 class="mt-4">My Tasks</h4>
@@ -73,6 +73,10 @@ import { defineComponent } from 'vue'
 import { useTaskStore } from '../../store/task';
 var taskId = null
 
+
+    // //responsiveness I went searching for how to make my screen responsive in vue because the container styling wasn't giving me was I wanted. then i found https://stackoverflow.com/questions/47219272/how-can-i-use-window-size-in-vue-how-do-i-detect-the-soft-keyboard
+    //https://thewebdev.info/2021/08/14/how-to-get-the-window-size-whenever-it-changes-in-a-vue-js-app/
+
 export default defineComponent({
   data() {
     return {
@@ -94,7 +98,7 @@ export default defineComponent({
 
  async  setup() {
     const taskStore = useTaskStore();
-
+//to fulfill the editTask method I want this instance to push the router to the edit-task api ending with the dynamic id as param/args
     function editTask(id) {
       this.$router.push(`/edit-task/${id}`);
     }

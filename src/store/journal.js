@@ -24,7 +24,7 @@ export const useJournalStore = defineStore('journal', {
         content,
         client_id: authStore.clientId,
         Date: Date.now(),
-      //captures the local date and time of user and transmits into DB) 
+//captures the local date and time of user and transmits into DB) 
       }
 /* to ensure an old item doesnt stick around in our input after saveNote method/action has been completed we reset our addNewitem function,to do ensure this I  pass an empty string in this case the state.value */
 
@@ -32,8 +32,9 @@ export const useJournalStore = defineStore('journal', {
         console.log(response);
       });
     },
+   // // here action is async, then I await the dynamic import of the JSON instead of static & needs to be access under a .default property as the dynamic import returns the JSON under a dafault key
   async fetchAllEntry() {
-    // Call getAllEntry() journal service, then set all entries in journal store state with response data array
+   // Call getAllEntry() journal service, then set all entries in journal store state with response data array
         await getAllEntry()
         .then((response) => {
             console.log('All Entry data')

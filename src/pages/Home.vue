@@ -28,7 +28,8 @@
     </div>
   </div>
 </template>
-
+<!-- by creating a new reactive ref, & initializing it to an empty string,
+const key=ref('') store & adding v-model to our input, a 2-way data binding was established btw the store and the input form, that way they always stay in-sync-->
 <script>
 import {  ref } from 'vue'
 import { useAuthStore } from '../store/auth';
@@ -60,3 +61,5 @@ export default {
 <style scoped>
 
 </style>
+
+<!--btn wrapped in a div, below I'm listening to the click event using the v-on click  directive, that gets triggered when a user presses the button -SAVE, looks like this v-on: click=Entry.push({{id: Entry.lenght +1 (generates a new id), label: currentEntry}}), .prevent modifier prevents the default page/window  refresh setting. @submit event lets us use both our enter key and aded benefit of on:click -->

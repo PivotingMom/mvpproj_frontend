@@ -8,7 +8,7 @@
       <form>
         <div class="form-group mb-4">
           <label for="Title">Entry Title:</label>
-          <!-- by creating a new reactive ref, called currentEntry & initializing it to an empty string,
+<!-- by creating a new reactive ref, called currentEntry & initializing it to an empty string,
 currentEntry=ref('') store & adding v-model to our input and assiging a value of currentEntry, a 2-way data binding was established btw the store and the input form, that way they always stay in-sync-->
           <input type="entrytext" class="form-control" v-model="journalStore.currentEntry.Title"
             placeholder="Enter Title">
@@ -16,11 +16,11 @@ currentEntry=ref('') store & adding v-model to our input and assiging a value of
         <div class="form-group mb-4">
           <label for="Content">Content:</label>
           <input type="text" class="form-control" v-model="journalStore.currentEntry.content" placeholder="Create Note">
-          <!--btn wrapped in a div, below I'm listening to the click event using the v-on click  directive, that gets triggered when a user presses the button -SAVE, looks like this v-on: click=Entry.push({{id: Entry.lenght +1 (generates a new id), label: currentEntry}}), .prevent modifier prevents the default page/window  refresh setting. @submit event lets us use both our enter key and aded benefit of on:click -->
+<!--btn wrapped in a div, below I'm listening to the click event using the v-on click  directive, that gets triggered when a user presses the button -SAVE, looks like this v-on: click=Entry.push({{id: Entry.lenght +1 (generates a new id), label: currentEntry}}), .prevent modifier prevents the default page/window  refresh setting. @submit event lets us use both our enter key and aded benefit of on:click -->
         </div>
         <div class="form-group">
           <button class="btn btn-success" @click.prevent="createNote">SAVE</button>
-          <!-- encapsulating click=Entry.push()into a function -createNote , I then called the method in the script below on the submit event, parathese are optional when you are calling a method on events like this in vue-->
+<!-- encapsulating click=Entry.push()into a function -createNote , I then called the method in the script below on the submit event, parathese are optional when you are calling a method on events like this in vue-->
         </div>
       </form>
     </div>

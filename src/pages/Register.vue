@@ -1,4 +1,4 @@
-<!-- //logic is similar to what i did on createEntry/create task/store  -->
+<!-- Template component  containing a parent container, a header a  form element for input, router link helps with navigation, button,a v-model attribute that provides  2-way data binding for our reactive references ,  the v-model attribute- makes it easier to bind reactive data to a form input so that whether the data is modified by the user via the input or by the code the data always in sync. .  ---->
 <template>
   <div class="container">
     <p class="text-center">Welcome to OrganizMe.</p>
@@ -37,6 +37,10 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import { useAuthStore } from '../store/auth';
+
+// The setup() hook serves as the entry point for Composition API usage in components
+//using storeToRefs create refs for any reactive property in the pinia state and only useful when using state from the store. https://vuejs.org/api/reactivity-utilities.html#isref
+//this is a typical pattern for vue powered site, there will be some data in an API , some empty global state in the store, and on the page where the data is needed, some actions are called to fulfill that state
 export default defineComponent({
   setup() {
     const authStore = useAuthStore();
@@ -52,6 +56,7 @@ export default defineComponent({
       }
       authStore.processRegister(payload)
     }
+// < !--by creating a new reactive ref & initializing it to an empty string, const key = ref('') store & adding v - model to our input  and assiging const values, a 2 - way data binding was established btw the store and the input form, that way they always stay in -sync-- >
     return {
       authStore,
       first_name,

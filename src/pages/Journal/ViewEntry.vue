@@ -64,13 +64,16 @@
   import { useRouter } from "vue-router"
   var entryId = null
   
+    // //responsiveness I went searching for how to make my screen responsive in vue because the container styling wasn't giving me was I wanted. then i found https://stackoverflow.com/questions/47219272/how-can-i-use-window-size-in-vue-how-do-i-detect-the-soft-keyboard
+    //https://thewebdev.info/2021/08/14/how-to-get-the-window-size-whenever-it-changes-in-a-vue-js-app/
+    
   export default defineComponent({
     data() {
       return {
         windowWidth: window.innerWidth,
       }
     },
-  
+
     mounted() {
       this.$nextTick(() => {
         window.addEventListener('resize', this.onResize)
